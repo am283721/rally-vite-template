@@ -4,11 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Custom App</title>
-    <script type="text/javascript" src="https://rally1.rallydev.com/apps/2.1/sdk.js"></script>
-   
+    <!-- Build Date: <{newDate}> -->
+    <!-- Version: <{version}> -->
+    <!-- Repository: <{repository}> -->
+    <script type="text/javascript" src="<{sdkUrl}>"></script>
+    <script type="text/javascript">
+      Ext.override(Rally.app.App, {
+        loadSettingsAndLaunch: function () {
+          if (this.getAppId()) {
+            if (this.stateful && !this.stateId) {
+              this.stateId = this.getContext().getScopedStateId('appState');
+            }
+            Deft.Chain.pipeline([this._loadScope, this._loadSettings, this._applyDefaultSettingsAndLaunch], this);
+          } else {
+            Rally.onReady(() => {
+              this._applyDefaultSettingsAndLaunch({});
+            });
+          }
+        },
+      });
+    </script>
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -35,6 +35,9 @@ export default defineConfig(async ({ mode }) => {
 
   return {
     plugins: [injectSDKSrc(VITE_APP_API_KEY, version, repo), svelte(), viteSingleFile()],
+    server: {
+      port: 1337
+    },
     build: {
       target: "esnext",
       minify: true,

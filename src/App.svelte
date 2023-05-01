@@ -1,8 +1,11 @@
-<script>
-  import SDK from 'rally-modern-sdk';
+<script lang="ts">
+  import { App, type SettingFieldConfig } from 'rally-modern-sdk';
+
+  export let defaultSettings: Record<string, any> = {};
+  export let settingsFields: SettingFieldConfig[];
 </script>
 
-<SDK.UI.App />
+<App {settingsFields} {defaultSettings} />
 
 <main />
 

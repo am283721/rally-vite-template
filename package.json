@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.1.1",
+    "@sveltejs/vite-plugin-svelte": "^2.4.1",
     "@types/papaparse": "^5.3.7",
-    "rally-modern-sdk": "^0.1.2",
-    "svelte": "^3.58.0",
-    "svelte-preprocess": "^5.0.3",
-    "tslib": "^2.5.0",
+    "rally-modern-sdk": "^0.1.6",
+    "svelte": "^3.59.1",
+    "svelte-preprocess": "^5.0.4",
+    "tslib": "^2.5.3",
     "typescript": "^4.9.5",
-    "vite": "^4.3.3",
+    "vite": "^4.3.9",
     "vite-plugin-singlefile": "^0.13.5"
   },
   "repository": ""

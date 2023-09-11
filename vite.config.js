@@ -12,7 +12,8 @@ const injectSDKSrc = (apiKey = '', version, repo) => {
       const dev = !!ctx?.server;
       const url = dev ? `https://rally1.rallydev.com/apps/2.1/sdk-debug.js?debug=true&_apiKey=${apiKey}` : '/apps/2.1/sdk.js';
 
-      return html.replace('<{sdkUrl}>', url).replace('<{version}>', version).replace('<{repository}>', repo).replace('<{newDate}>', new Date().toString());
+      // The '#' symbol in front of the sdkUrl prevents vite from warning us of being unable to bundle the script during build
+      return html.replace('#<{sdkUrl}>', url).replace('<{version}>', version).replace('<{repository}>', repo).replace('<{newDate}>', new Date().toString());
     }
   };
 };

@@ -7,7 +7,7 @@
     <!-- Build Date: <{newDate}> -->
     <!-- Version: <{version}> -->
     <!-- Repository: <{repository}> -->
-    <script type="text/javascript" src="<{sdkUrl}>"></script>
+    <script type="text/javascript" src="#<{sdkUrl}>"></script>
     <script type="text/javascript">
       Ext.override(Rally.app.App, {
         loadSettingsAndLaunch: function () {
@@ -21,7 +21,7 @@
               this._applyDefaultSettingsAndLaunch({});
             });
           }
-        },
+        }
       });
     </script>
   </head>

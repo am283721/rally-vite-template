@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "target": "esnext",
-    "module": "esnext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext",
+    "module": "ESNext",
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
+    "moduleDetection": "force",
     "resolveJsonModule": true,
     /**
      * To have warnings / errors of the Svelte compiler at the
@@ -15,11 +16,13 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
+    "allowJs": true,
     /**
      * Typecheck JS in `.svelte` and `.js` files by default.
      * Disable this if you'd like to use dynamic types.
      */
-    "checkJs": true
+    "checkJs": true,
+    "strict": true
   },
   /**
    * Use global.d.ts instead of compilerOptions.types

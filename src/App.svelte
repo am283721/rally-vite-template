@@ -16,5 +16,7 @@
     display: flex;
     flex-direction: column;
     font-size: 1.3rem;
+    height: 100vh;
+    background-color: white;
   }
 </style>

@@ -1,13 +1,12 @@
 <script lang="ts">
   import { App, type SettingFieldConfig } from 'rally-modern-sdk';
 
-  export let defaultSettings: Record<string, any> = {};
-  export let settingsFields: SettingFieldConfig[];
+  let { defaultSettings, settingsFields }: { defaultSettings: Record<string, any>; settingsFields: SettingFieldConfig[] } = $props();
 </script>
 
 <App {settingsFields} {defaultSettings} />
 
-<main />
+<main></main>
 
 <style>
   main {

@@ -8,22 +8,6 @@
     <!-- Version: <{version}> -->
     <!-- Repository: <{repository}> -->
     <script type="text/javascript" src="#<{sdkUrl}>"></script>
-    <script type="text/javascript">
-      Ext.override(Rally.app.App, {
-        loadSettingsAndLaunch: function () {
-          if (this.getAppId()) {
-            if (this.stateful && !this.stateId) {
-              this.stateId = this.getContext().getScopedStateId('appState');
-            }
-            Deft.Chain.pipeline([this._loadScope, this._loadSettings, this._applyDefaultSettingsAndLaunch], this);
-          } else {
-            Rally.onReady(() => {
-              this._applyDefaultSettingsAndLaunch({});
-            });
-          }
-        }
-      });
-    </script>
   </head>
   <body>
     <div id="app"></div>

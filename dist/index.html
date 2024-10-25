@@ -8,22 +8,6 @@
     <!-- Version: 0.0.1 -->
     <!-- Repository:  -->
     <script type="text/javascript" src="/apps/2.1/sdk.js"></script>
-    <script type="text/javascript">
-      Ext.override(Rally.app.App, {
-        loadSettingsAndLaunch: function () {
-          if (this.getAppId()) {
-            if (this.stateful && !this.stateId) {
-              this.stateId = this.getContext().getScopedStateId('appState');
-            }
-            Deft.Chain.pipeline([this._loadScope, this._loadSettings, this._applyDefaultSettingsAndLaunch], this);
-          } else {
-            Rally.onReady(() => {
-              this._applyDefaultSettingsAndLaunch({});
-            });
-          }
-        },
-      });
-    </script>
     <script type="module" crossorigin>
 //assets/index.b1cf6fbc.js
 const It=function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const l of document.querySelectorAll('link[rel="modulepreload"]'))o(l);new MutationObserver(l=>{for(const s of l)if(s.type==="childList")for(const a of s.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&o(a)}).observe(document,{childList:!0,subtree:!0});function n(l){const s={};return l.integrity&&(s.integrity=l.integrity),l.referrerpolicy&&(s.referrerPolicy=l.referrerpolicy),l.crossorigin==="use-credentials"?s.credentials="include":l.crossorigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function o(l){if(l.ep)return;l.ep=!0;const s=n(l);fetch(l.href,s)}};It();function S(){}const ke=e=>e;function nt(e){return e()}function Be(){return Object.create(null)}function V(e){e.forEach(nt)}function fe(e){return typeof e=="function"}function H(e,t){return e!=e?t==t:e!==t||e&&typeof e=="object"||typeof e=="function"}function Tt(e){return Object.keys(e).length===0}function Pt(e,...t){if(e==null)return S;const n=e.subscribe(...t);return n.unsubscribe?()=>n.unsubscribe():n}function ot(e,t,n){e.$$.on_destroy.push(Pt(t,n))}function me(e){return e??""}const lt=typeof window<"u";let je=lt?()=>window.performance.now():()=>Date.now(),Ee=lt?e=>requestAnimationFrame(e):S;const te=new Set;function st(e){te.forEach(t=>{t.c(e)||(te.delete(t),t.f())}),te.size!==0&&Ee(st)}function Ae(e){let t;return te.size===0&&Ee(st),{promise:new Promise(n=>{te.add(t={c:e,f:n})}),abort(){te.delete(t)}}}function g(e,t){e.appendChild(t)}function rt(e){if(!e)return document;const t=e.getRootNode?e.getRootNode():e.ownerDocument;return t&&t.host?t:e.ownerDocument}function Rt(e){const t=x("style");return Mt(rt(e),t),t.sheet}function Mt(e,t){g(e.head||e,t)}function A(e,t,n){e.insertBefore(t,n||null)}function E(e){e.parentNode.removeChild(e)}function ge(e,t){for(let n=0;n<e.length;n+=1)e[n]&&e[n].d(t)}function x(e){return document.createElement(e)}function D(e){return document.createElementNS("http://www.w3.org/2000/svg",e)}function R(e){return document.createTextNode(e)}function I(){return R(" ")}function Ot(){return R("")}function j(e,t,n,o){return e.addEventListener(t,n,o),()=>e.removeEventListener(t,n,o)}function Bt(e){return function(t){return t.preventDefault(),e.call(this,t)}}function u(e,t,n){n==null?e.removeAttribute(t):e.getAttribute(t)!==n&&e.setAttribute(t,n)}function Nt(e){return Array.from(e.childNodes)}function F(e,t){t=""+t,e.wholeText!==t&&(e.data=t)}function Ne(e,t){e.value=t??""}function U(e,t,n,o){n===null?e.style.removeProperty(t):e.style.setProperty(t,n,o?"important":"")}function qt(e,t,{bubbles:n=!1,cancelable:o=!1}={}){const l=document.createEvent("CustomEvent");return l.initCustomEvent(e,n,o,t),l}const be=new Map;let ye=0;function Ut(e){let t=5381,n=e.length;for(;n--;)t=(t<<5)-t^e.charCodeAt(n);return t>>>0}function Ft(e,t){const n={stylesheet:Rt(t),rules:{}};return be.set(e,n),n}function De(e,t,n,o,l,s,a,r=0){const f=16.666/o;let i=`{

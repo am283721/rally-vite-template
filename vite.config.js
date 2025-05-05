@@ -1,25 +1,20 @@
 import { join } from 'path';
 import { existsSync, promises as fs } from 'fs';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 
-const injectSDKSrc = (apiKey = '', version, repo) => {
+const injectBuildInfo = (version, repo) => {
   return {
-    name: 'inject-sdk-src',
+    name: 'inject-build-info',
     enforce: 'pre',
-    transformIndexHtml(html, ctx) {
-      const dev = !!ctx?.server;
-      const url = dev ? `https://rally1.rallydev.com/apps/2.1/sdk-debug.js?debug=true&_apiKey=${apiKey}` : '/apps/2.1/sdk.js';
-
-      // The '#' symbol in front of the sdkUrl prevents vite from warning us of being unable to bundle the script during build
-      return html.replace('#<{sdkUrl}>', url).replace('<{version}>', version).replace('<{repository}>', repo).replace('<{newDate}>', new Date().toString());
+    transformIndexHtml(html) {
+      return html.replace('<{version}>', version).replace('<{repository}>', repo).replace('<{newDate}>', new Date().toString());
     }
   };
 };
 
-export default defineConfig(async ({ mode }) => {
-  const { VITE_APP_API_KEY } = loadEnv(mode, process.cwd());
+export default defineConfig(async () => {
   const packageJsonPath = join(process.cwd(), 'package.json');
   let version = '';
   let repo = '';
@@ -31,13 +26,22 @@ export default defineConfig(async ({ mode }) => {
   }
 
   return {
-    plugins: [injectSDKSrc(VITE_APP_API_KEY, version, repo), svelte(), viteSingleFile()],
+    plugins: [injectBuildInfo(version, repo), svelte(), viteSingleFile()],
     server: {
-      port: 1337
+      port: 1337,
+      origin: 'https://rally1.rallydev.com',
+      proxy: {
+        '/slm/': {
+          target: 'https://rally1.rallydev.com',
+          changeOrigin: true,
+          secure: false
+        }
+      }
     },
     build: {
       target: 'esnext',
       minify: true,
+      emptyOutDir: false,
       assetsInlineLimit: 100000000,
       chunkSizeWarningLimit: 100000000,
       cssCodeSplit: false,

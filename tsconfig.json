@@ -27,5 +27,5 @@
    * Use global.d.ts instead of compilerOptions.types
    * to avoid limiting type declarations.
    */
-  "include": ["*.d.ts", "src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte", "src/**/*.ts"]
+  "include": ["*.d.ts", "src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte", "src/**/*.ts", "vite.config.js", "vite.config.js"]
 }

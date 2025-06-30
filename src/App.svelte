@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { App, setDefaultSettings, type SettingFieldConfig } from 'rally-modern-sdk';
+  import { App, setDefaultSettings } from 'rally-modern-sdk';
   import { setAppState } from './app-state.svelte.js';
   import { defaultSettings } from './utils.js';
   import Settings from './Settings.svelte';

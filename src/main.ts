@@ -1,15 +1,11 @@
 import { mount } from 'svelte';
 import App from './App.svelte';
-import { initRallyApp, type SettingFieldConfig } from 'rally-modern-sdk';
+import { initRallyApp } from 'rally-modern-sdk';
 
-const defaultSettings = {};
-const settingsFields: SettingFieldConfig[] = [];
-
-await initRallyApp('Custom App', { defaultSettings, settingsFields });
+await initRallyApp('custom-app');
 
 const app = mount(App, {
-  target: document.getElementById('app'),
-  props: { defaultSettings, settingsFields }
+  target: document.getElementById('app') as Element
 });
 
 export default app;

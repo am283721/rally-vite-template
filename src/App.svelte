@@ -1,10 +1,18 @@
 <script lang="ts">
-  import { App, type SettingFieldConfig } from 'rally-modern-sdk';
+  import { App, setDefaultSettings } from 'rally-modern-sdk';
+  import { setAppState } from './app-state.svelte.js';
+  import { defaultSettings } from './utils.js';
+  import Settings from './Settings.svelte';
 
-  let { defaultSettings, settingsFields }: { defaultSettings: Record<string, any>; settingsFields: SettingFieldConfig[] } = $props();
+  const appState = setAppState();
+  setDefaultSettings(defaultSettings);
 </script>
 
-<App {settingsFields} {defaultSettings} />
+<App>
+  {#snippet settings()}
+    <Settings />
+  {/snippet}
+</App>
 
 <main></main>
 
